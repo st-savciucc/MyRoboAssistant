@@ -3,8 +3,6 @@ Dig. Talk. Emote.
 
 :::info
 - **Student:** Savchuk Kostiantyn  
-- **Group:** 331CC  
-- **Date:** 2025  
 - **GitHub Repository:** [MyRoboAssistant](https://github.com/st-savciucc/MyRoboAssistant.git)
 :::
 
@@ -84,11 +82,12 @@ This project combines my passion for robotics with safe, high-performance embedd
 
 ## Weekly Log
 
-| Week | Activities                                   |
-|------|----------------------------------------------|
-| 1    | Requirements analysis, embassy-rs study      |
-| 2    | Motor driver tests, display driver bring-up  |
-| …    | _to be filled weekly_                       |
+| Period          | Status  |
+|-----------------|---------|
+| Week 5 – 11 May | WIP…    |
+| Week 12 – 18 May| WIP…    |
+| Week 19 – 25 May| WIP…    |
+
 
 ---
 
@@ -105,20 +104,23 @@ This project combines my passion for robotics with safe, high-performance embedd
 | [HC‑SR04 ultrasonic sensor](https://www.optimusdigital.ro/en/ultrasonic-sensors/2328-senzor-ultrasonic-de-distana-hc-sr04-compatibil-33-v-i-5-v.html?search_query=HC-SR04&results=20) | 2 | 15 |
 | [PDM MEMS microphone (I2S‑capable)](https://www.optimusdigital.ro/en/others/4774-modul-microfon-pdm-mems-adafruit.html?search_query=I2S+MEMS&results=6) | 1 | 44 |
 | [Mini speaker + AMP](https://www.optimusdigital.ro/en/small-speakers/8685-minimu-speaker.html?search_query=Mini+speaker&results=34) | 1 | 70 |
+| Consumables (buttons, potentiometers, wires, etc.)                                                                        | Various | 50       |
                                                                                                                |
 
 ---
 
 ## Software Design
 
-| Crate / Lib          | Purpose                         | Link                                              |
-|----------------------|---------------------------------|---------------------------------------------------|
-| `embassy` / `embassy-net` | Async runtime & networking      | https://crates.io/crates/embassy                  |
-| `embedded-hal`       | Hardware abstraction layer      | https://crates.io/crates/embedded-hal             |
-| `heapless`           | Fixed-size containers           | https://crates.io/crates/heapless                 |
-| `serde` / `serde_json` | Serialization                   | https://crates.io/crates/serde                    |
-| `embedded-graphics`  | 2D graphics on TFT              | https://crates.io/crates/embedded-graphics        |
-| `rust-voice`         | Speech recognition              | https://crates.io/crates/rust-voice               |
+| Library / Crate                                | Description                            | Usage                                    |
+|------------------------------------------------|----------------------------------------|------------------------------------------|
+| [embassy](https://crates.io/crates/embassy) / [embassy-net](https://crates.io/crates/embassy-net) | Asynchronous runtime & networking     | Core framework for async tasks & Wi-Fi/BLE |
+| [embedded-hal](https://crates.io/crates/embedded-hal)               | Hardware abstraction layer             | Standardized traits for MCU peripherals  |
+| [heapless](https://crates.io/crates/heapless)                       | Fixed-size data structures             | Queues, Vec, String without heap use     |
+| [serde](https://crates.io/crates/serde) / [serde_json](https://crates.io/crates/serde_json)     | Serialization                          | Config data & message encoding/decoding  |
+| [embedded-graphics](https://crates.io/crates/embedded-graphics)     | 2D graphics on TFT                     | Rendering emojis & UI                    |
+| [rust-voice](https://crates.io/crates/rust-voice)                   | Speech recognition                     | Keyword spotting & voice command handling |
+
+---
 
 ### Main Firmware Tasks
 - **comm** – Wi-Fi/BLE connect & messaging  
