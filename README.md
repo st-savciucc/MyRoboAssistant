@@ -88,24 +88,22 @@ This project combines my passion for robotics with safe, high-performance embedd
 | Week 12 – 18 May| WIP…    |
 | Week 19 – 25 May| WIP…    |
 
-
 ---
 
 ## Bill of Materials (BOM)
 
-| Component | Qty | Price&nbsp;(RON) |
-|-----------|-----|------------------|
-| [Raspberry Pi Pico 2 W](https://www.optimusdigital.ro/en/raspberry-pi-boards/13327-raspberry-pi-pico-2-w.html?search_query=5056561803975&results=1) | 1 | 40 |
-| [Pb‑acid 6 V 12 Ah battery + charger](https://www.optimusdigital.ro/en/lead-acid-batteries/10190-lead-acid-battery-6-v-12a.html) | 1 | 34 |
-| [Micro metal DC gear‑motor](https://www.optimusdigital.ro/en/micro-gearmotors/10348-10001-micro-metal-gearmotor-hpcb-6v.html?search_query=DC+motor&results=1033) | 2 | 159 |
-| [L298N dual motor driver](https://www.optimusdigital.ro/en/brushed-motor-drivers/145-l298n-dual-motor-driver.html?search_query=L298N+motor%C2%A0driver&results=4) | 1 | 10 |
-| [SG90 micro servo](https://www.optimusdigital.ro/en/servomotors/2261-micro-servo-motor-sg90-180.html?search_query=Servo%C2%A0SG90&results=11) | 4 | 12 |
-| [3.5″ TFT 480 × 320 touchscreen](https://www.optimusdigital.ro/en/lcds/3333-tft-35-480-x-320-adafruit-display-with-touchscreen-for-raspberry-pi.html?search_query=1.8%E2%80%B0%C2%A0TFT&results=66) | 1 | 309 |
-| [HC‑SR04 ultrasonic sensor](https://www.optimusdigital.ro/en/ultrasonic-sensors/2328-senzor-ultrasonic-de-distana-hc-sr04-compatibil-33-v-i-5-v.html?search_query=HC-SR04&results=20) | 2 | 15 |
-| [PDM MEMS microphone (I2S‑capable)](https://www.optimusdigital.ro/en/others/4774-modul-microfon-pdm-mems-adafruit.html?search_query=I2S+MEMS&results=6) | 1 | 44 |
-| [Mini speaker + AMP](https://www.optimusdigital.ro/en/small-speakers/8685-minimu-speaker.html?search_query=Mini+speaker&results=34) | 1 | 70 |
-| Consumables (buttons, potentiometers, wires, etc.)                                                                        | Various | 50       |
-                                                                                                               |
+| Component                                                                                                                 | Qty     | Price (RON) |
+|---------------------------------------------------------------------------------------------------------------------------|---------|-------------|
+| [Raspberry Pi Pico 2 W](https://www.optimusdigital.ro/en/raspberry-pi-boards/13327-raspberry-pi-pico-2-w.html?search_query=5056561803975&results=1) | 1       | 40          |
+| [Pb-acid 6 V 12 Ah battery + charger](https://www.optimusdigital.ro/en/lead-acid-batteries/10190-lead-acid-battery-6-v-12a.html)            | 1       | 34          |
+| [Micro metal DC gear-motor](https://www.optimusdigital.ro/en/micro-gearmotors/10348-10001-micro-metal-gearmotor-hpcb-6v.html?search_query=DC+motor&results=1033) | 2       | 159         |
+| [L298N dual motor driver](https://www.optimusdigital.ro/en/brushed-motor-drivers/145-l298n-dual-motor-driver.html?search_query=L298N+motor%C2%A0driver&results=4)    | 1       | 10          |
+| [SG90 micro servo](https://www.optimusdigital.ro/en/servomotors/2261-micro-servo-motor-sg90-180.html?search_query=Servo%C2%A0SG90&results=11)                      | 4       | 12          |
+| [3.5″ TFT 480 × 320 touchscreen](https://www.optimusdigital.ro/en/lcds/3333-tft-35-480-x-320-adafruit-display-with-touchscreen-for-raspberry-pi.html?search_query=1.8%E2%80%B0%C2%A0TFT&results=66) | 1 | 309 |
+| [HC-SR04 ultrasonic sensor](https://www.optimusdigital.ro/en/ultrasonic-sensors/2328-senzor-ultrasonic-de-distana-hc-sr04-compatibil-33-v-i-5-v.html?search_query=HC-SR04&results=20)          | 2       | 15          |
+| [PDM MEMS microphone (I2S-capable)](https://www.optimusdigital.ro/en/others/4774-modul-microfon-pdm-mems-adafruit.html?search_query=I2S+MEMS&results=6)                                 | 1       | 44          |
+| [Mini speaker + AMP](https://www.optimusdigital.ro/en/small-speakers/8685-minimu-speaker.html?search_query=Mini+speaker&results=34)                                          | 1       | 70          |
+| Consumables (buttons, potentiometers, wires, etc.)                                                                        | Various | 50          |
 
 ---
 
@@ -137,5 +135,3 @@ This project combines my passion for robotics with safe, high-performance embedd
 - `Diagrama-de-flux-software.webp` – firmware flowchart  
 
 ---
-
-*Signed-off-by: Savchuk Kostiantyn <kostiantyn.savchuk@stud.acs.upb.ro>*
