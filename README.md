@@ -2,8 +2,8 @@
 Listen. Respond. Connect.
 
 :::info
-- **Student:** Savchuk Kostiantyn  
-- **GitHub Repository:** [MyRoboAssistant](https://github.com/st-savciucc/MyRoboAssistant.git)
+**Student:** Savchuk Kostiantyn \
+**GitHub Repository:** [proiect-st-savciucc](https://github.com/UPB-PMRust-Students/proiect-st-savciucc.git)
 :::
 
 ## Description
@@ -130,8 +130,7 @@ This project combines my passion for robotics with safe, high-performance embedd
 
 ---
 
-## Supporting Files
-- `Diagrama-de-arhitectura.webp` – hardware block diagram  
-- `Diagrama-de-flux-software.webp` – firmware flowchart  
-
+## Links
+- [Raspberry Pi Pico 2 W product page](https://www.raspberrypi.com/products/raspberry-pi-pico-2-w/) – official specifications and documentation  
+- [MyRoboAssistant GitHub](https://github.com/UPB-PMRust-Students/proiect-st-savciucc.git) – source code and README
 ---
