@@ -14,7 +14,7 @@ This project combines my passion for robotics with safe, high-performance embedd
 
 ## Architecture
 
-![Hardware Architecture](./Diagrams/Diagrama-de-arhitectura.svg)
+![Hardware Architecture](./Diagrams/Diagrama-de-arhitectura.webp)
 
 ### Hardware Blocks
 
@@ -128,13 +128,13 @@ This project combines my passion for robotics with safe, high-performance embedd
 - **motion_control** – motor & servo control  
 - **speech** – audio capture & keyword spotting  
 
-![Software Flow](./Diagrams/Diagrama-de-flux-software.svg)
+![Software Flow](./Diagrams/Diagrama-de-flux-software.webp)
 
 ---
 
 ## Supporting Files
-- `Diagrama-de-arhitectura.svg` – hardware block diagram  
-- `Diagrama-de-flux-software.svg` – firmware flowchart  
+- `Diagrama-de-arhitectura.webp` – hardware block diagram  
+- `Diagrama-de-flux-software.webp` – firmware flowchart  
 
 ---
 
