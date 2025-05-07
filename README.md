@@ -1,5 +1,5 @@
 # MyRoboAssistant
-Dig. Talk. Emote.
+Listen. Respond. Connect.
 
 :::info
 - **Student:** Savchuk Kostiantyn  
