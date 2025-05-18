@@ -23,12 +23,11 @@ A Raspberry Pi Pico 2 W handles timing-critical control, while an ESP32 DevKit l
 
 ## Log
 
-| Week (ISO) | Milestone / Activities                             |
-| ---------- | -------------------------------------------------- |
-| 2025-W18   | **Milestone #1** – project page + initial diagrams |
-| 2025-W19   | Chassis design & power tests                       |
-| 2025-W20   | KiCad schematic & PCB outline                      |
-| 2025-W21   | UART/I²S bring-up, TFT driver                      |
+Week 5 - 11 May
+
+Week 12 - 18 May
+
+Week 19 - 25 May
 
 ---
 
