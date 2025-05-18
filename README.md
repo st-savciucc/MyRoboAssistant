@@ -3,7 +3,7 @@ Listen. Respond. Connect.
 
 :::info
 **Student:** Savchuk Kostiantyn \ 
-**GitHub repository:** [proiect-st-savciucc](https://github.com/UPB-PMRust-Students/proiect-st-savciucc.git)
+**GitHub Repository:** [proiect-st-savciucc](https://github.com/UPB-PMRust-Students/proiect-st-savciucc.git)
 :::
 
 ---
@@ -32,7 +32,7 @@ A Raspberry Pi Pico 2 W handles timing-critical control, while an ESP32 DevKit l
 
 ---
 
-## Hardware Description
+## Hardware
 
 | Block | Module(s) | Role & Highlights |
 |-------|-----------|-------------------|
@@ -120,38 +120,38 @@ The full schematic was drawn in **KiCad v9** and covers every connection between
 
 ### Bill of Materials
 
-| Device                                                                                                                                                                    | Usage                                       | Price                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [Raspberry Pi Pico 2 W](https://www.optimusdigital.ro/en/raspberry-pi-boards/13327-raspberry-pi-pico-2-w.html)                                                            | Central real-time controller (Rust/embassy) | [40 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E2)  |
-| [ESP32 DevKit v1](https://www.optimusdigital.ro/en/wifi-boards/3053-placa-de-dezvoltare-esp32-cu-wifi-si-bluetooth.html)                                                  | Wi-Fi/BLE & cloud-AI tasks                  | [70 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E3)  |
-| [Li-Po 7.4 V 4000 mAh](https://www.emag.ro/baterie-lipo-gens-ace-4000mah-7-4v-1c-kxg0006576/pd/D67HQHMBM)                                                                 | Power supply                                | [139 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E4) |
-| [XL4015 5 A buck converter](https://www.optimusdigital.ro/en/step-down-power-supplies/2410-sursa-dc-dc-coboratoare-xl4015-de-5-a-intrare-de-4-38-v.html)                  | 5 V system rail (DC-DC down-conversion)     | [17 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E5)  |
-| [MAX9814 mic pre-amp](https://www.emag.ro/amplificator-microfon-max9814-ai1095/pd/DJGRKFMBM)                                                                              | Electret microphone pre-amplifier           | [13 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E6)  |
-| [MAX98357A I²S DAC](https://www.emag.ro/amplificator-audio-max98357-i2s-compatibil-cu-esp32-si-raspberry-pi-emg238/pd/DVYJWJYBM)                                          | High-quality audio output                   | [21 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E7)  |
-| Mini 8 Ω speaker pair (Ø 28 mm)                                                                                                                                           | Audio playback                              | [20 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E8)  |
-| [Waveshare 2.8″ TFT SPI](https://www.emag.ro/ecran-lcd-tft-tactil-waveshare-2-8-inch-320x240-compatibil-cu-raspberry-pi-pico-restouch-lcd-2-8waveshare19804/pd/DBJZXQMBM) | Display UI (emotions & menus)               | [155 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E9) |
-| [L298N dual motor driver](https://www.optimusdigital.ro/en/brushed-motor-drivers/145-l298n-dual-motor-driver.html)                                                        | DC motor driving                            | [10 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E10) |
-| [DC motor + wheel set (×2)](https://www.emag.ro/motor-cu-roata-pentru-aplicatii-arduino-set-2-bucati-3874784221701/pd/DK1PDZYBM)                                          | Tank-style locomotion                       | [45 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E11) |
-| [SG90 micro-servo](https://www.optimusdigital.ro/en/servomotors/2982-micro-pololu-feetech-fs90r-servomotor.html)                                                          | Arm gestures                                | [24 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E12) |
-| [MG996R metal-gear servo](https://www.optimusdigital.ro/en/servomotors/1520-mg996-digital-metal-servomotor-90.html)                                                       | Head gestures                               | [34 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E13) |
-| [IOE-SR05 ultrasonic (UART)](https://www.optimusdigital.ro/en/distance-sensors/8152-ioe-sr05-ultrasonic-distance-sensor-with-serial-interface-3-55-v.html)                | Obstacle/proximity detection                | [28 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E14) |
-| Consumables (buttons, potentiometers, wires, etc.)                                                                                                                        | Miscellaneous assembly & wiring             | [50 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E15) |
+| Device                                                                                                                                                       | Usage                                       | Price                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Raspberry Pi Pico 2 W](https://www.optimusdigital.ro/en/raspberry-pi-boards/13327-raspberry-pi-pico-2-w.html)                                                            | Central real-time controller (Rust/embassy) | [40 RON](https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf)                                                                              |
+| [ESP32 DevKit v1](https://www.optimusdigital.ro/en/wifi-boards/3053-placa-de-dezvoltare-esp32-cu-wifi-si-bluetooth.html)                                                  | Wi-Fi/BLE & cloud-AI tasks                  | [70 RON](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-dev-kits-en-master-esp32.pdf)                                            |
+| [Li-Po 7.4 V 4000 mAh](https://www.emag.ro/baterie-lipo-gens-ace-4000mah-7-4v-1c-kxg0006576/pd/D67HQHMBM)                                                                 | Power supply                                | [139 RON](https://li-polymer-battery.com/7-4v-rechargeable-li-polymer-battery-lp426580-2s-4000mah-with-pcm-and-wires/)                                 |
+| [XL4015 5 A buck converter](https://www.optimusdigital.ro/en/step-down-power-supplies/2410-sursa-dc-dc-coboratoare-xl4015-de-5-a-intrare-de-4-38-v.html)                  | 5 V system rail (DC-DC down-conversion)     | [17 RON](https://www.alldatasheet.com/datasheet-pdf/view/763183/ETC2/XL4015.html)                                                                      |
+| [MAX9814 mic pre-amp](https://www.emag.ro/amplificator-microfon-max9814-ai1095/pd/DJGRKFMBM)                                                                              | Electret microphone pre-amplifier           | [13 RON](https://www.alldatasheet.com/datasheet-pdf/view/217128/MAXIM/MAX9814.html)                                                                    |
+| [MAX98357A I²S DAC](https://www.emag.ro/amplificator-audio-max98357-i2s-compatibil-cu-esp32-si-raspberry-pi-emg238/pd/DVYJWJYBM)                                          | High-quality audio output                   | [21 RON](https://www.alldatasheet.com/datasheet-pdf/view/623796/MAXIM/MAX98357A.html)                                                                  |
+| Mini 8 Ω speaker pair (Ø 28 mm)                                                                                                                                           | Audio playback                              | [20 RON](https://www.taoglas.com/datasheets/SPKM.78.8.B.pdf)                                                                                           |
+| [Waveshare 2.8″ TFT SPI](https://www.emag.ro/ecran-lcd-tft-tactil-waveshare-2-8-inch-320x240-compatibil-cu-raspberry-pi-pico-restouch-lcd-2-8waveshare19804/pd/DBJZXQMBM) | Display UI (emotions & menus)               | [155 RON](https://www.waveshare.com/2.8inch-capacitive-touch-lcd.htm)                                                                                  |
+| [L298N dual motor driver](https://www.optimusdigital.ro/en/brushed-motor-drivers/145-l298n-dual-motor-driver.html)                                                        | DC motor driving                            | [10 RON](https://www.alldatasheet.com/datasheet-pdf/view/22440/STMICROELECTRONICS/L298N.html)                                                          |
+| [DC motor + wheel set (×2)](https://www.emag.ro/motor-cu-roata-pentru-aplicatii-arduino-set-2-bucati-3874784221701/pd/DK1PDZYBM)                                          | Tank-style locomotion                       | [45 RON](https://components101.com/motors/toy-dc-motor)                                                                                                |
+| [SG90 micro-servo](https://www.optimusdigital.ro/en/servomotors/2982-micro-pololu-feetech-fs90r-servomotor.html)                                                          | Arm gestures                                | [24 RON](https://www.alldatasheet.com/datasheet-pdf/view/1572383/ETC/SG90.html)                                                                        |
+| [MG996R metal-gear servo](https://www.optimusdigital.ro/en/servomotors/1520-mg996-digital-metal-servomotor-90.html)                                                       | Head gestures                               | [34 RON](https://www.alldatasheet.com/datasheet-pdf/view/1131873/ETC2/MG996R.html)                                                                     |
+| [IOE-SR05 ultrasonic (UART)](https://www.optimusdigital.ro/en/distance-sensors/8152-ioe-sr05-ultrasonic-distance-sensor-with-serial-interface-3-55-v.html)                | Obstacle/proximity detection                | [28 RON](https://www.modulemore.com/en/product/1960/เซ็นเซอร์วัดระยะ-อัลตราโซนิคเซ็นเซอร์-ioe-sr05-ultrasonic-sensor-ranging-module-ttl-serial-output) |
+| Consumables (buttons, potentiometers, wires, etc.)                                                                                                                        | Miscellaneous assembly & wiring             | [50 RON](https://docs.google.com/spreadsheets/d/1MyRoboAssistantBOM#gid=0&range=E15)                                                                   |
 
 *Prices are list prices (May 2025) from OptimusDigital / eMAG.*
 
-
 ---
 
-## Software Design
+## Software
 
-| Library / Crate | Purpose / Usage |
-|-----------------|-----------------|
-| [**embassy**](https://crates.io/crates/embassy) / [**embassy-net**](https://crates.io/crates/embassy-net) | Async runtime on RP2040 & networking (Wi-Fi/BLE) |
-| [**embedded-hal**](https://crates.io/crates/embedded-hal) | Standard HAL traits for MCU peripherals |
-| [**heapless**](https://crates.io/crates/heapless) | Fixed-capacity Vec / String / queue without heap |
-| [**serde**](https://crates.io/crates/serde) / [**serde_json**](https://crates.io/crates/serde_json) | Serialization of config & cloud messages |
-| [**embedded-graphics**](https://crates.io/crates/embedded-graphics) | 2-D graphics primitives for the TFT UI |
-| [**rust-voice**](https://crates.io/crates/rust-voice) | Keyword spotting & voice command parsing |
+| Library / Crate                                                                                           | Description                    | Usage                                      |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------ |
+| [**embassy**](https://crates.io/crates/embassy) / [**embassy-net**](https://crates.io/crates/embassy-net) | Async runtime & networking     | Core framework for async tasks & Wi-Fi/BLE |
+| [**embedded-hal**](https://crates.io/crates/embedded-hal)                                                 | Hardware Abstraction Layer     | Standardized traits for MCU peripherals    |
+| [**heapless**](https://crates.io/crates/heapless)                                                         | Fixed-capacity data structures | Queues, Vec, String without heap usage     |
+| [**serde**](https://crates.io/crates/serde) / [**serde\_json**](https://crates.io/crates/serde_json)      | Serialization                  | Config data & message encoding/decoding    |
+| [**embedded-graphics**](https://crates.io/crates/embedded-graphics)                                       | 2D graphics library            | Rendering UI primitives on the TFT         |
+| [**rust-voice**](https://crates.io/crates/rust-voice)                                                     | Speech recognition             | Keyword spotting & voice command parsing   |
+
 
 ### Main Firmware Tasks
 - **comm** – Wi-Fi / BLE connection & messaging  
@@ -165,4 +165,3 @@ The full schematic was drawn in **KiCad v9** and covers every connection between
 
 ## Links
 1. [Raspberry Pi Pico 2 W – official docs](https://www.raspberrypi.com/products/raspberry-pi-pico-2-w/)
-2. [MyRoboAssistant source code](https://github.com/UPB-PMRust-Students/proiect-st-savciucc.git)
