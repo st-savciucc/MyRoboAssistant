@@ -25,11 +25,6 @@ mod http;
 mod i2s;
 mod openai;
 mod azure_tts;
-mod servo;
-mod motors;
-
-use servo::{DualServo, ServoId};
-use motors::{L9110S, MotorId};
 
 /* ------------ date Wi-Fi -------------------------------------------- */
 const STA_SSID: &str = "Constantin)";
@@ -93,7 +88,7 @@ fn main() -> Result<()> {
     let (tx_audio2http, rx_audio2http) = mpsc::channel::<(String, String)>();
     let rx_audio2http = Arc::new(Mutex::new(rx_audio2http));
 
-    /* înainte de canalele WAV / text existente */  
+    /* înainte de canalele WAV / text existente */
     let (tx_tts, rx_tts) = mpsc::channel::<String>();
 
     const TTS_STACK: usize = 24 * 1024;            // 24 KB – suficient pentru TLS

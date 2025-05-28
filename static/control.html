@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<meta charset="utf-8" />
+<title>MyRoboAssistant – Control robot</title>
+
+<style>
+  :root { --c:#0a74ff; --c2:#ffe900; }
+  body  { font-family:sans-serif; text-align:center; margin:0; padding:1rem; }
+  h1    { margin:0 0 1.4rem; color:var(--c); }
+  nav a { margin-right:1rem; }
+  .grid { display:grid; grid-template-columns:repeat(3,7rem); grid-auto-rows:7rem;
+          gap:1rem; justify-content:center; margin-top:2rem; }
+  button{ font-size:1rem; font-weight:600; border:2px solid var(--c); border-radius:.8rem;
+          background:#fff; cursor:pointer; transition:.15s; }
+  button:hover{ background:var(--c); color:#fff; }
+  #salut, #disco{ border-color:var(--c2); }
+  #salut:hover, #disco:hover{ background:var(--c2); color:#000; }
+</style>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="chat.html">💬 Chat</a>
+</nav>
+
+<h1>Control robot</h1>
+
+<div class="grid">
+  <div></div>
+  <button id="inainte">Înainte</button>
+  <div></div>
+
+  <button id="stanga">Stânga</button>
+  <div></div>
+  <button id="dreapta">Dreapta</button>
+
+  <button id="salut">Salut</button>
+  <div></div>
+  <button id="disco">Disco</button>
+</div>
+
+<script type="module">
+const HOST = "http://172.20.10.5";    
+
+async function cmd(path){
+  try{
+    await fetch(`${HOST}/${path}`);
+  }catch(e){ alert("Conexiune ESP32 pierdută:\n"+e); }
+}
+
+inainte.onclick = () => cmd("move/inainte");
+stanga.onclick  = () => cmd("move/stanga");
+dreapta.onclick = () => cmd("move/dreapta");
+salut.onclick   = () => cmd("action/salut");
+disco.onclick   = () => cmd("action/disco");
+</script>
+</html>

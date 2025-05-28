@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>MyRoboAssistant – Chat</title>
+
+<style>
+  :root { --accent:#0a74ff; }
+
+  body       { font-family:sans-serif; margin:0; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#fafafa; }
+  h1         { margin-bottom:2rem; color:var(--accent); text-align:center; }
+  .panel     { display:flex; flex-direction:column; align-items:center; gap:1.2rem; }
+
+  button     { padding:.55rem 1.3rem; font-size:1rem; border:none; border-radius:.35rem; background:var(--accent); color:#fff; cursor:pointer; }
+  button[disabled]{ opacity:.5; cursor:not-allowed; }
+  input[type="text"]{ padding:.5rem .8rem; font-size:1rem; width:18rem; border:1px solid #ccc; border-radius:.35rem; }
+
+  #log       { width:100%; max-width:32rem; height:9rem; margin-top:1.5rem; background:#fff; border:1px solid #ddd; border-radius:.35rem; padding:.7rem; overflow:auto; white-space:pre-wrap; }
+</style>
+</head>
+
+<body>
+<h1>MyRoboAssistant</h1>
+
+<div class="panel">
+
+  <div>
+    <button id="btnStart">Start vorbire</button>
+    <button id="btnStop"  disabled>Stop</button>
+  </div>
+
+  <div>
+    <input  id="txtSend" type="text" placeholder="Scrie mesajul aici…" />
+    <button id="btnSend">Trimite</button>
+  </div>
+
+  <button id="btnHello">Hello test</button>
+
+  <pre id="log"></pre>
+</div>
+
+<script type="module">
+const BACKEND_HOST = "http://172.20.10.5";
+const CHAT_MODEL   = "gpt-3.5-turbo";
+
+const $$  = id => document.getElementById(id);
+const log = m  => ($$("log").textContent += m + "\n");
+
+const startBt = $$("btnStart"), stopBt   = $$("btnStop");
+const helloBt = $$("btnHello");
+const sendBt  = $$("btnSend"),  txtSend  = $$("txtSend");
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (!SpeechRecognition) alert("Browserul nu suportă SpeechRecognition (Chrome/Edge).");
+
+const getUserMedia = navigator.mediaDevices?.getUserMedia;
+if (!getUserMedia)   log("❌  Browser-ul nu are getUserMedia().");
+
+let rec, chunks = [];   
+let recognition;         
+let finalTxt = "";        
+let interimTxt = ""; 
+
+helloBt.onclick = async () => {
+  log("● Trimit \"Hello\" către ESP…");
+  try {
+    const r = await fetch(`${BACKEND_HOST}/hello`);
+    log(`ESP32 ➜ ${r.ok ? await r.text() : "HTTP "+r.status}`);
+  } catch (e) { log("Eroare fetch: "+e); }
+};
+
+async function askChatGPT(message){
+  const OPENAI_KEY = localStorage.getItem("OPENAI_KEY") || "";
+  if (!OPENAI_KEY){ alert("Nu ai setat cheia OpenAI."); return ""; }
+
+  const payload = {
+    model: CHAT_MODEL,
+    messages:[
+      {role:"system",content:"Ești ChatGPT și răspunzi în română, clar și concis."},
+      {role:"user",content:message}
+    ]
+  };
+
+  try{
+    const r = await fetch("https://api.openai.com/v1/chat/completions",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        Authorization:"Bearer "+OPENAI_KEY
+      },
+      body:JSON.stringify(payload)
+    });
+    if (!r.ok){ log(`❌ ChatGPT ${r.status}: ${await r.text()}`); return ""; }
+    const j = await r.json();
+    return (j.choices?.[0]?.message?.content||"").trim();
+  }catch(e){
+    log("Eroare ChatGPT fetch: "+e);
+    return "";
+  }
+}
+
+async function sendToEsp(text){
+  try{
+    await fetch(`${BACKEND_HOST}/send_text`,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain"},
+      body:text
+    });
+  }catch{}
+}
+
+startBt.onclick = async () => {
+  if (!SpeechRecognition || !getUserMedia) return;
+
+  try {
+    const stream = await getUserMedia.call(navigator.mediaDevices,{audio:{channelCount:1}});
+    rec = new MediaRecorder(stream,{mimeType:"audio/webm"});
+    rec.ondataavailable = e => chunks.push(e.data);
+    rec.start();
+
+    recognition = new SpeechRecognition();
+    recognition.lang = "ro-RO";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    finalTxt = ""; interimTxt = "";
+
+    recognition.onresult = e => {
+      interimTxt = "";
+      for (let i = e.resultIndex; i < e.results.length; ++i) {
+        const tr = e.results[i][0].transcript;
+        e.results[i].isFinal ? finalTxt += tr + " " : interimTxt += tr;
+      }
+      $$("log").textContent = $$("log").textContent.replace(/(\n?Interim:.*)?$/, "") +
+                              `\nInterim: ${finalTxt}${interimTxt}`;
+    };
+    recognition.onerror = e => log("⚠️ SpeechRecognition: "+e.error);
+    recognition.start();
+
+    startBt.disabled = true; stopBt.disabled = false;
+    log("● Înregistrare şi transcriere…");
+  } catch(e){ log("Eroare microfon: "+e); }
+};
+
+stopBt.onclick = () => {
+  if (!recognition) return;
+  recognition.stop();
+  rec.stop();
+
+  rec.onstop = async () => {
+    startBt.disabled = false; stopBt.disabled = true;
+
+    const transcript = (finalTxt.trim() || interimTxt.trim());
+    if (!transcript){
+      log("\n⚠️  Nu s-a capturat text.");
+      chunks = []; return;
+    }
+    log(`\nEu ➜ ${transcript}`);
+
+    const aiTxt = await askChatGPT(transcript);
+    if (!aiTxt){ chunks = []; return; }
+    log(`GPT ➜ ${aiTxt}\n`);
+
+    await sendToEsp(aiTxt);
+    chunks = []; 
+  };
+};
+
+sendBt.onclick = async () => {
+  const msg = txtSend.value.trim();
+  if (!msg) return;
+  log(`Eu ➜ ${msg}`);
+  txtSend.value = "";
+
+  const aiTxt = await askChatGPT(msg);
+  if (!aiTxt) return;
+  log(`GPT ➜ ${aiTxt}\n`);
+
+  await sendToEsp(aiTxt);
+};
+</script>
+</body>
+</html>

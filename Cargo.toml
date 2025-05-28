@@ -8,34 +8,46 @@ rust-version = "1.77"
 
 [[bin]]
 name    = "esp32-hello-world"
-harness = false        # evită test-harness-ul implicit
+harness = false      # evită test-harness-ul implicit
 
 [profile.release]
-opt-level      = "z"          # cea mai agresivă optimizare pentru dimensiune
+opt-level      = "z"
 lto            = true
 codegen-units  = 1
-strip          = "debuginfo"  # elimină DWARF (~250-300 kB), nu doar simbolurile
-panic          = "abort"      # scoate mecanismul de unwinding
-
+strip          = "debuginfo"
+panic          = "abort"
 
 [profile.dev]
 debug     = true
 opt-level = "z"
 
 [features]
-default      = []
-experimental = ["esp-idf-svc/experimental"]
+default = []
+mic     = []
+
+
 
 [dependencies]
-log          = "0.4"
-anyhow       = "1"
-heapless     = "0.8"
-serde        = { version = "1", features = ["derive"] }
-serde_json   = "1"
+esp-idf-sys = { version = "0.36.1", features = ["binstart"] }  # runtime + std
+esp-idf-hal = "0.45.2"                                         # periferice HAL
+esp-idf-svc = "0.51"                                           # Wi-Fi, HTTP, etc.
+embedded-svc = "0.28.1"                                        # ABI comun „service”
 
-# ecosistem ESP-IDF – doar ce folosești
-esp-idf-svc  = { version = "0.50.1", features = ["std", "alloc"] }
-embedded-svc = { version = "0.28.1",  default-features = false }
+# ── utilitare generale ──────────────────────────────────────────────────────
+anyhow  = "1"         # gestionare erori
+log     = "0.4"
+heapless = "0.8"
+
+# ── JSON / (de)serializare pentru OpenAI & Azure TTS ───────────────────────
+serde       = { version = "1", features = ["derive"], default-features = false }
+serde_json  = "1"
+
+# ── server HTTP static (serveşte fişiere din binar) ─────────────────────────
+include_dir = "0.7"
+
 
 [build-dependencies]
 embuild = "0.33"
+
+[package.metadata.esp-idf]
+std_thread_stack_size = 24576   # 24 KB
